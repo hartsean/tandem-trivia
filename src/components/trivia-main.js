@@ -1,12 +1,10 @@
 import Ranking from './ranking'
-import Game from './gameplay'
 import axios from 'axios'
 import React from 'react'
 
 export default class Trivia extends React.Component{
   state = {
-    trivia: [],
-    choices: []
+    trivia: []
   }
 
   componentDidMount() {
@@ -15,19 +13,21 @@ export default class Trivia extends React.Component{
         const trivia = res.data;
         this.setState({ trivia });
       })
+    ;
   }
 
   render() {
     return (
       <ul>
       <Ranking />
-      <Game />
+      <br />
         { this.state.trivia.map(prompt => 
           <div>
-            <li>{prompt.question}</li>
+            <li>Question: {prompt.question}</li>
             {/* {push promt.correct into prompt.correct array, shuffle, and then render} */}
-            <li>{prompt.incorrect}</li>
-            <li>{prompt.correct}</li>
+            <li>Answer: {prompt.incorrect}{prompt.correct}</li>
+            {/* <li>Correct: {prompt.correct}</li> */}
+            <br />
           </div>
         ) }
       </ul>
