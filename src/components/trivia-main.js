@@ -5,15 +5,15 @@ import React from 'react'
 
 export default class Trivia extends React.Component{
   state = {
-    questions: []
+    trivia: [],
+    choices: []
   }
 
   componentDidMount() {
     axios.get(`/trivia-data/trivia-data.json`)
       .then(res => {
-        console.log(res)
-        const questions = res.data;
-        this.setState({ questions });
+        const trivia = res.data;
+        this.setState({ trivia });
       })
   }
 
@@ -22,7 +22,7 @@ export default class Trivia extends React.Component{
       <ul>
       <Ranking />
       <Game />
-        { this.state.questions.map(prompt => 
+        { this.state.trivia.map(prompt => 
           <div>
             <li>{prompt.question}</li>
             {/* {push promt.correct into prompt.correct array, shuffle, and then render} */}
