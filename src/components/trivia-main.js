@@ -20,14 +20,14 @@ export default class Trivia extends React.Component{
     return (
       <ul>
       <Ranking />
-      <br />
         { this.state.trivia.map(prompt => 
           <div>
-            <li>Question: {prompt.question}</li>
-            {/* {push promt.correct into prompt.correct array, shuffle, and then render} */}
-            <li>Answer: {prompt.incorrect}{prompt.correct}</li>
-            {/* <li>Correct: {prompt.correct}</li> */}
-            <br />
+            <div className="question">
+              Question: {prompt.question}
+            </div>
+            <div className="answer">
+              Answer: {prompt.incorrect} {prompt.correct}
+            </div>
           </div>
         ) }
       </ul>
