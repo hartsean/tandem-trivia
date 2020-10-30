@@ -4,14 +4,15 @@ import React from 'react'
 
 export default class Trivia extends React.Component{
   state = {
-    trivia: []
+    trivia: ""
   }
 
   componentDidMount() {
-    axios.get(`/trivia-data/trivia-data.json`)
+    axios.get(`/server/`)
       .then(res => {
-        const trivia = res.data;
+        const trivia = res;
         this.setState({ trivia });
+        console.log(trivia);
       })
     ;
   }
@@ -20,16 +21,7 @@ export default class Trivia extends React.Component{
     return (
       <ul>
       <Ranking />
-        { this.state.trivia.map(prompt => 
-          <div>
-            <div className="question">
-              Question: {prompt.question}
-            </div>
-            <div className="answer">
-              Answer: {prompt.incorrect} {prompt.correct}
-            </div>
-          </div>
-        ) }
+        { this.state.trivia }
       </ul>
     )
   }
