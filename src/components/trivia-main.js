@@ -46,10 +46,6 @@ export default class Trivia extends React.Component{
   render() {
     return (
       <ul>
-<<<<<<< HEAD
-      <Ranking />
-        { this.state.trivia }
-=======
       <Ranking/>
       Points:{this.state.points}
         { this.state.trivia.map(prompt => 
@@ -57,13 +53,13 @@ export default class Trivia extends React.Component{
             <div className="question">
               Question: {prompt.question}
             </div>
+            
             <div className="answer">
               <div className="incorrect" onClick={this.handleClick}> {prompt.incorrect} </div>
               <div className="correct" onClick={this.handleClick}> {prompt.correct} </div>
             </div>
           </div>
         ) }
->>>>>>> newChange
       </ul>
     )
   }
