@@ -8,9 +8,6 @@ export default class Trivia extends React.Component{
     this.handleClick = this.handleClick.bind(this);
   }
   state = {
-<<<<<<< HEAD
-    trivia: ""
-=======
     trivia: [],
     points: 0,
     wrong: 0
@@ -32,7 +29,6 @@ export default class Trivia extends React.Component{
     if(this.state.wrong + this.state.points === 10){
       console.log('end of round');
     }
->>>>>>> newChange
   }
 
   handleClick(e){
