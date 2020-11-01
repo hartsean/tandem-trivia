@@ -35,11 +35,10 @@ export default class Trivia extends React.Component{
     this.checkAnswer(e)
   }
   componentDidMount() {
-    axios.get(`./trivia-data/trivia-data.json`)
+    axios.get(`/trivia-data/trivia-data.json`)
       .then(res => {
-        const trivia = res;
+        const trivia = res.data;
         this.setState({ trivia });
-        console.log(trivia);
       })
     ;
   }
@@ -53,7 +52,6 @@ export default class Trivia extends React.Component{
             <div className="question">
               Question: {prompt.question}
             </div>
-
             <div className="answer">
               <div className="incorrect" onClick={this.handleClick}> {prompt.incorrect} </div>
               <div className="correct" onClick={this.handleClick}> {prompt.correct} </div>
