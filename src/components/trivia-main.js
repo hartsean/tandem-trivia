@@ -9,7 +9,8 @@ export default class Trivia extends React.Component{
   }
   state = {
     trivia: [],
-    points: 1,
+    points: 0,
+    wrong: 0
   }
   checkAnswer(e){
     e.stopPropagation()
@@ -20,7 +21,13 @@ export default class Trivia extends React.Component{
      })
       console.log('selected correct');
     } else {
+      this.setState(prevState => {
+        return {wrong: prevState.wrong + 1}
+     })
       console.log('selected incorrect');
+    }
+    if(this.state.wrong + this.state.points === 10){
+      console.log('end of round');
     }
   }
 
@@ -46,9 +53,8 @@ export default class Trivia extends React.Component{
               Question: {prompt.question}
             </div>
             <div className="answer">
-              Answer: 
-              <div className="incorrect" onClick={this.handleClick}>{prompt.incorrect}</div>
-              <div className="correct" onClick={this.handleClick}>{prompt.correct}</div>
+              <div className="incorrect" onClick={this.handleClick}> {prompt.incorrect} </div>
+              <div className="correct" onClick={this.handleClick}> {prompt.correct} </div>
             </div>
           </div>
         ) }
